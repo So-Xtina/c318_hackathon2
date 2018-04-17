@@ -1,13 +1,90 @@
-#main-body {
-     height: 100vh;
-     width: 100vw;
-     position: absolute;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-flow: row wrap;
  }
 
-.header {
-    border: 1px solid black;
-    box-sizing: border-box;
+.navHeader {
     height: 20%;
     width: 100%;
-    display: inline-block;
+    border: 2px solid blue;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
 }
+
+.navTitle {
+    height: 70%;
+    width: 100%;
+    border: 2px solid deeppink;
+    display: flex;
+    Justify-content: center;
+    align-items: center;
+}
+
+.title {
+    height: 80%;
+    width: 70%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.infoNav {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid green;
+}
+
+.navMenu {
+    height: 100%;
+    width: 50%;
+    border: 2px solid grey;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.menuContainer {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.locations-menu {
+    height: 100%;
+    width: 40%;
+    border: 2px solid pink;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-area {
+    height: 100%;
+    width: 60%;
+    border: 2px solid grey;
+}
+
+.hauntedSpots {
+    height: 10%;
+    width: 100%;
+    padding-top: 13px;
+    border: 2px solid yellow;
+    text-align: center;
+}
+
+.hauntedSpots:nth-child(5) {
+    padding-top: 5px;
+}
+
+
