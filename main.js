@@ -196,7 +196,11 @@ function getFlickrImageUrl(photo_id) {
         url: 'https://api.flickr.com/services/rest?',
         success: function(data) {
             console.log("This is the data we're getting back from the getFlickerImageUrl", data);
-            if(data.)
+            if(data.sizes.size.length < 8){
+                $('<img>').css('url', data.sizes.size[data.sizes.size.length-1])
+            } else {
+                data.sizes.size[7];
+            }
         }
     }
     $.ajax(ajaxConfig);
