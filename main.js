@@ -44,8 +44,8 @@ var latitudeLongitudeLocations = [
  * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
  */
 function initializeApp(){
-    initMap();
-    googleMapsLocations(destinationArray);
+    // initMap();
+    // googleMapsLocations(destinationArray);
     addClickHandlersToElements();
 }
 
@@ -58,9 +58,11 @@ function initializeApp(){
 
 function addClickHandlersToElements() {
     $('.hauntedSpots').on('click', function() {
+        $('#infoModal, .shadowBox').toggle();
         var photo_id = $(this).attr('data-photo-id');
+        var video_id = $(this).attr('data-video-id');
         getFlickrImageUrl(photo_id);
-        onYouTubeIframeAPIReady(videoID);
+        onYouTubeIframeAPIReady(video_id);
     });
 }
 
@@ -115,6 +117,7 @@ function googleMapsLocations(array){
     }
 }
     function initMap() {
+        // debugger;
         var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 3.9,
@@ -132,47 +135,47 @@ function googleMapsLocations(array){
  * YouTube AJAX Call:
  */
 // 2. This code loads the IFrame Player API code asynchronously.
-    var tag = document.createElement('script');
+//     var tag = document.createElement('script');
 
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+//     tag.src = "https://www.youtube.com/iframe_api";
+//     var firstScriptTag = document.getElementsByTagName('script')[0];
+//     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// 3. This function creates an <iframe> (and YouTube player)
-//    after the API code downloads.
-    var player;
-    function onYouTubeIframeAPIReady(array) {
-        for(let i = 0; i<array.length; i++){
-            player= new YT.Player('player', {
-                height: '390',
-                width: '640',
-                videoId: array[i], // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
-                events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-    }
+// // 3. This function creates an <iframe> (and YouTube player)
+// //    after the API code downloads.
+//     var player;
+//     function onYouTubeIframeAPIReady(array) {
+//         for(let i = 0; i<array.length; i++){
+//             player= new YT.Player('player', {
+//                 height: '390',
+//                 width: '640',
+//                 videoId: array[i], // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
+//                 events: {
+//                     'onReady': onPlayerReady,
+//                     'onStateChange': onPlayerStateChange
+//                 }
+//             });
+//         }
+//     }
 
-// 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-    event.target.playVideo();
-}
+// // 4. The API will call this function when the video player is ready.
+// function onPlayerReady(event) {
+//     event.target.playVideo();
+// }
 
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
-var done = false;
-function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-    }
-}
-function stopVideo() {
-    player.stopVideo();
-}
+// // 5. The API calls this function when the player's state changes.
+// //    The function indicates that when playing a video (state=1),
+// //    the player should play for six seconds and then stop.
+// var done = false;
+// function onPlayerStateChange(event) {
+//     if (event.data == YT.PlayerState.PLAYING && !done) {
+//         setTimeout(stopVideo, 6000);
+//         done = true;
+//     }
+// }
+// function stopVideo() {
+//     player.stopVideo();
+// }
 
 /********************************************************************
  * Flickr AJAX Call
