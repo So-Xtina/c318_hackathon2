@@ -2,8 +2,6 @@ $(document).ready(initializeApp);
 //525 S Winchester Blvd, San Jose, CA 95128
 //7747 U.S. 61, St Francisville, LA 70775
 //1126 Queens Hwy, Long Beach, CA 90802
-var videoID = [];
-var destinationArray = ['525+S+Winchester+Blvd,+San+Jose,', '7747+Francisville+St,+Louisiana,', '1126+Queens+Highway,+Long+Beach,'];
 var latitudeLongitudeLocations = [
     {   name: 'Queen Mary',
         coordinates: {lat:33.7531, lng: -118.1898}
@@ -45,7 +43,6 @@ var latitudeLongitudeLocations = [
  */
 function initializeApp(){
     initMap();
-    googleMapsLocations(destinationArray);
     addClickHandlersToElements();
 }
 
@@ -60,7 +57,8 @@ function addClickHandlersToElements() {
     $('.hauntedSpots').on('click', function() {
         var photo_id = $(this).attr('data-photo-id');
         getFlickrImageUrl(photo_id);
-        onYouTubeIframeAPIReady(videoID);
+        var video_id = $(this).attr('data-video-id');
+        displayVideo(video_id);
     });
 }
 
@@ -97,23 +95,7 @@ function carousalModal(destinationObject) {
     
 }
 
-function googleMapsLocations(array){
-    var latLongObject = {};
-    for(var i = 0; i < array.length; i++){
-        $.ajax({
-            dataType: 'json',
-            method: 'post',
-            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+array[i]+'&key=AIzaSyB8pudXXVYwWP14nlsKLdjfrzGizasWYb4',
-            success: function(response){
 
-                console.log('success');
-                console.log(response);
-                return true;
-            }
-
-        })
-    }
-}
     function initMap() {
         var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -141,18 +123,18 @@ function googleMapsLocations(array){
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
     var player;
-    function onYouTubeIframeAPIReady(array) {
-        for(let i = 0; i<array.length; i++){
-            player= new YT.Player('player', {
+    function displayVideo(video) {
+
+            player= new YT.Player('item1', {
                 height: '390',
                 width: '640',
-                videoId: array[i], // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
+                videoId: video, // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
                 }
             });
-        }
+
     }
 
 // 4. The API will call this function when the video player is ready.
