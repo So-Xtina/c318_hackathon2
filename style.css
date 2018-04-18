@@ -89,7 +89,6 @@ body {
     padding-top: 5px;
 }
 
-
 .hauntedSpots {
     --color-text: #454847;
     --color-bg: #1d2121;
@@ -106,6 +105,20 @@ body {
     background-size: 500px 0;
     position: relative;
     display: inline-block;
+}
+
+.container {
+    position: absolute;
+    visibility: hidden;
+    display: inline-block;
+    color: white;
+    margin: auto;
+    right: 6%;
+    top: 20%;
+    height: 70%;
+    width: 90%;
+    background-color: white;
+    opacity: .4;
 }
 
 .glitch--style-3 {
@@ -125,6 +138,7 @@ body {
 }
 
 .grid {
+    border: 1px solid white;
     margin: 50vh auto 0;
     position: relative;
     padding: 0 1em;
@@ -692,7 +706,6 @@ body {
         transform: translate3d(0,0,0);
     }
 }
-
 
 
 .container{
