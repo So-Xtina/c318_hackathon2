@@ -2,8 +2,6 @@ $(document).ready(initializeApp);
 //525 S Winchester Blvd, San Jose, CA 95128
 //7747 U.S. 61, St Francisville, LA 70775
 //1126 Queens Hwy, Long Beach, CA 90802
-var videoID = [];
-var destinationArray = ['525+S+Winchester+Blvd,+San+Jose,', '7747+Francisville+St,+Louisiana,', '1126+Queens+Highway,+Long+Beach,'];
 var latitudeLongitudeLocations = [
     {   name: 'Queen Mary',
         coordinates: {lat:33.7531, lng: -118.1898}
@@ -62,7 +60,7 @@ function addClickHandlersToElements() {
         var photo_id = $(this).attr('data-photo-id');
         var video_id = $(this).attr('data-video-id');
         getFlickrImageUrl(photo_id);
-        onYouTubeIframeAPIReady(video_id);
+        displayVideo(video_id);
     });
 }
 
@@ -135,47 +133,47 @@ function googleMapsLocations(array){
  * YouTube AJAX Call:
  */
 // 2. This code loads the IFrame Player API code asynchronously.
-//     var tag = document.createElement('script');
+    var tag = document.createElement('script');
 
-//     tag.src = "https://www.youtube.com/iframe_api";
-//     var firstScriptTag = document.getElementsByTagName('script')[0];
-//     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// // 3. This function creates an <iframe> (and YouTube player)
-// //    after the API code downloads.
-//     var player;
-//     function onYouTubeIframeAPIReady(array) {
-//         for(let i = 0; i<array.length; i++){
-//             player= new YT.Player('player', {
-//                 height: '390',
-//                 width: '640',
-//                 videoId: array[i], // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
-//                 events: {
-//                     'onReady': onPlayerReady,
-//                     'onStateChange': onPlayerStateChange
-//                 }
-//             });
-//         }
-//     }
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+    var player;
+    function displayVideo(videoID) {
 
-// // 4. The API will call this function when the video player is ready.
-// function onPlayerReady(event) {
-//     event.target.playVideo();
-// }
+            player= new YT.Player('player', {
+                height: '390',
+                width: '640',
+                videoId: videoID, // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
 
-// // 5. The API calls this function when the player's state changes.
-// //    The function indicates that when playing a video (state=1),
-// //    the player should play for six seconds and then stop.
-// var done = false;
-// function onPlayerStateChange(event) {
-//     if (event.data == YT.PlayerState.PLAYING && !done) {
-//         setTimeout(stopVideo, 6000);
-//         done = true;
-//     }
-// }
-// function stopVideo() {
-//     player.stopVideo();
-// }
+    }
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+    }
+}
+function stopVideo() {
+    player.stopVideo();
+}
 
 /********************************************************************
  * Flickr AJAX Call
