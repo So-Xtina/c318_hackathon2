@@ -1,6 +1,27 @@
+/*@font-face {*/
+    /*font-family: scary;*/
+    /*src: url(fonts/October Crow.ttf);*/
+/*}*/
+
+
 * {
     box-sizing: border-box;
+    color: ghostwhite;
+    font-family: 'IM Fell English SC', serif;
+    text-shadow: 3px 3px 5px #901a18;
+    /*animation: color-me-in 5s;*/
+
 }
+
+/*@keyframes color-me-in {*/
+    /*0% {*/
+        /*background-image: url("images/white.png");*/
+    /*}*/
+    /*100% {*/
+        /*background-image: url("images/Gloomy_Forest.jpg");*/
+
+    /*}*/
+/*}*/
 
 body {
     background-image: url("images/Gloomy_Forest.jpg");
@@ -11,10 +32,36 @@ body {
     flex-flow: row wrap;
  }
 
+
+.landing-page-body {
+    background-image: url("images/landing.jpg");
+    font-family: 'IM Fell English SC', serif;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-flow: row wrap;
+
+}
+
+.main-page-enter {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    font-size: xx-large;
+}
+
+.heading {
+    margin: auto;
+    font-size: -webkit-xxx-large;
+}
+
 .navHeader {
     height: 20%;
     width: 100%;
-    border: 2px solid blue;
+    /*border: 2px solid dimgrey;*/
+    box-shadow: 3px 3px 5px #901a18;
+    border-radius: 5px;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -24,7 +71,8 @@ body {
 .navTitle {
     height: 70%;
     width: 100%;
-    border: 2px solid deeppink;
+    box-sizing: border-box;
+    /*border: 2px solid dimgrey;*/
     display: flex;
     Justify-content: center;
     align-items: center;
@@ -43,13 +91,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid green;
 }
 
 .navMenu {
     height: 100%;
     width: 50%;
-    border: 2px solid grey;
     text-align: center;
     padding-top: 5px;
 }
@@ -64,7 +110,9 @@ body {
 .locations-menu {
     height: 100%;
     width: 40%;
-    border: 2px solid pink;
+    box-shadow: 3px 3px 5px #901a18;
+    border-radius: 5px;
+    /*border: 1px solid dimgrey;*/
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -74,14 +122,23 @@ body {
 .map-area {
     height: 100%;
     width: 60%;
-    border: 2px solid grey;
+    /*border: 1px solid grey;*/
+    box-shadow: 3px 3px 5px #901a18;
+    border-radius: 4px;
+
+}
+
+#map img {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    opacity: .85;
 }
 
 .hauntedSpots {
     height: 10%;
     width: 100%;
     padding-top: 13px;
-    border: 2px solid yellow;
+    /*border: 2px solid dimgrey;*/
     text-align: center;
 }
 
