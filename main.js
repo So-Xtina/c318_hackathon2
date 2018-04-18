@@ -56,11 +56,13 @@ function initializeApp(){
 
 function addClickHandlersToElements() {
     $('.hauntedSpots').on('click', function() {
-        $('#infoModal, .shadowBox').toggle();
         var photo_id = $(this).attr('data-photo-id');
         var video_id = $(this).attr('data-video-id');
         getFlickrImageUrl(photo_id);
         displayVideo(video_id);
+        $('#infoModal, .shadowBox').toggle();
+
+        console.log("This is the video_id in the clickHandler",video_id);
     });
 }
 
@@ -143,8 +145,9 @@ function googleMapsLocations(array){
 //    after the API code downloads.
     var player;
     function displayVideo(videoID) {
+        console.log("This is the video id in the function ", videoID);
 
-            player= new YT.Player('player', {
+            player= new YT.Player('item', {
                 height: '390',
                 width: '640',
                 videoId: videoID, // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
