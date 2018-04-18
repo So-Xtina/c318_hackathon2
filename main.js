@@ -9,8 +9,9 @@ var destinationArray = ['525+S+Winchester+Blvd,+San+Jose,', '7747+Francisville+S
  * @returns: {undefined} none
  * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
  */
-function initializeApp(){
+function initializeApp() {
     googleMapsLocations(destinationArray);
+    addClickHandlersToElements();
 }
 
 
@@ -20,8 +21,11 @@ function initializeApp(){
  * @returns  {undefined}
  */
 
-function addClickHandlersToElements(){
-
+function addClickHandlersToElements() {
+    $('.hauntedSpots').on('click', function() {
+        var photo_id = $(this).attr('data-photo-id');
+        getFlickrImageUrl(photo_id);
+    });
 
 }
 
@@ -31,7 +35,7 @@ function addClickHandlersToElements(){
  * @returns  {undefined}
  */
 
-function addDestination(){
+function addDestination() {
     var destinationObject = {};
 
 }
@@ -43,7 +47,7 @@ function addDestination(){
  * @returns  {undefined}
  */
 
-function renderMapToDom(destinationObject){
+function renderMapToDom(destinationObject) {
 
 }
 
@@ -54,17 +58,17 @@ function renderMapToDom(destinationObject){
  * @returns  {undefined}
  */
 
-function carousalModal(destinationObject){
-
+function carousalModal(destinationObject) {
+    
 }
 
-function googleMapsLocations(array){
-    for(var i = 0; i < array.length; i++){
+function googleMapsLocations(array) {
+    for (var i = 0; i < array.length; i++) {
         $.ajax({
             dataType: 'json',
             method: 'post',
-            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+array[i]+'&key=AIzaSyB8pudXXVYwWP14nlsKLdjfrzGizasWYb4',
-            success: function(response){
+            url: 'https://maps.googleapis.com/maps/api/geocode/json?address=' + array[i] + '&key=AIzaSyB8pudXXVYwWP14nlsKLdjfrzGizasWYb4',
+            success: function (response) {
                 student_array = response.data;
                 // updateStudentList(student_array);
                 console.log('success');
@@ -91,7 +95,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
-    player= new YT.Player('player', {
+    player = new YT.Player('player', {
         height: '390',
         width: '640',
         videoId: 'Y5bW1frdYOY',
@@ -121,3 +125,50 @@ function stopVideo() {
     player.stopVideo();
 }
 
+/********************************************************************
+ * Flickr AJAX Call
+ */
+
+// function flickrImages(text) {
+//         var ajaxImages = {
+//             dataType: 'json',
+//             data: {
+//                 api_key: 'f1e9ba45e6591bdf15e5a296d5ebaaa6',
+//                 secret: '3eec67f85681e79a',
+//                 method: 'flickr.photos.search',
+//                 format: 'json',
+//                 nojsoncallback: '1',
+//                 text: text
+//             },
+//             method: 'POST',
+//             url: 'https://api.flickr.com/services/rest/?',
+//             success: function (data) {
+//                 console.log('This is the data returned', data);
+//             },
+//             error: function (error) {
+//                 console.log('This is the error', error);
+//             }
+//         }
+//         $.ajax(ajaxImages);
+// }
+
+function getFlickrImageUrl(photo_id) {
+    var ajaxConfig = {
+        dataType: 'JSON',
+        data: {
+            api_key: 'f1e9ba45e6591bdf15e5a296d5ebaaa6',
+            secret: '3eec67f85681e79a',
+            method: 'flickr.photos.getSizes',
+            format: 'json',
+            nojsoncallback: '1',
+            photo_id: photo_id
+        },
+        method: 'GET',
+        url: 'https://api.flickr.com/services/rest?',
+        success: function(data) {
+            console.log("This is the data we're getting back from the getFlickerImageUrl", data);
+            
+        }
+    }
+    $.ajax(ajaxConfig);
+}
