@@ -2,6 +2,7 @@ $(document).ready(initializeApp);
 //525 S Winchester Blvd, San Jose, CA 95128
 //7747 U.S. 61, St Francisville, LA 70775
 //1126 Queens Hwy, Long Beach, CA 90802
+var videoID = [];
 var destinationArray = ['525+S+Winchester+Blvd,+San+Jose,', '7747+Francisville+St,+Louisiana,', '1126+Queens+Highway,+Long+Beach,'];
 var latitudeLongitudeLocations = [
     {   name: 'Queen Mary',
@@ -59,8 +60,8 @@ function addClickHandlersToElements() {
     $('.hauntedSpots').on('click', function() {
         var photo_id = $(this).attr('data-photo-id');
         getFlickrImageUrl(photo_id);
+        onYouTubeIframeAPIReady(videoID);
     });
-
 }
 
 /*************************************************************************************************************************
@@ -114,17 +115,18 @@ function googleMapsLocations(array){
     }
 }
 function initMap() {
-function initializeMap(locationsArray) {
-    var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
-    var map = new google.maps.Map(document.getElementsByClassName('theMap'), {
-        zoom: 3.9,
-        center: unitedStatesCenterPoint
-    });
-    for(var i = 0; i < latitudeLongitudeLocations.length; i++){
-            var marker = new google.maps.Marker({
-            position: latitudeLongitudeLocations[i].coordinates,
-            map: map
+    function initializeMap(locationsArray) {
+        var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
+        var map = new google.maps.Map(document.getElementsByClassName('theMap'), {
+            zoom: 3.9,
+            center: unitedStatesCenterPoint
         });
+        for (var i = 0; i < latitudeLongitudeLocations.length; i++) {
+            var marker = new google.maps.Marker({
+                position: latitudeLongitudeLocations[i].coordinates,
+                map: map
+            });
+        }
     }
 }
 /*************************************************
@@ -145,7 +147,7 @@ function initializeMap(locationsArray) {
             player= new YT.Player('player', {
                 height: '390',
                 width: '640',
-                videoId: 'Y5bW1frdYOY', // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
+                videoId: array[i], // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
@@ -153,7 +155,6 @@ function initializeMap(locationsArray) {
             });
         }
     }
-}
 
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
