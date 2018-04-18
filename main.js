@@ -61,8 +61,11 @@ function addClickHandlersToElements() {
         getFlickrImageUrl(photo_id);
         displayVideo(video_id);
         $('#infoModal, .shadowBox').toggle();
-
         console.log("This is the video_id in the clickHandler",video_id);
+    });
+
+    $('.close').on('click', function(){
+        $('#infoModal, .shadowBox').toggle();
     });
 }
 
@@ -199,11 +202,11 @@ function getFlickrImageUrl(photo_id) {
             console.log("This is the data we're getting back from the getFlickerImageUrl", data);
             var hauntedHouseImg = null;
             if (data.sizes.size.length < 8) {
-                hauntedHouseImg = $('<img>').attr('src', data.sizes.size[data.sizes.size.length - 1])
+                hauntedHouseImg = $('<img>').attr('src', data.sizes.size[data.sizes.size.length - 1].source)
             } else {
-                hauntedHouseImg = $('<img>').attr('src', data.sizes.size[7]);
+                hauntedHouseImg = $('<img>').attr('src', data.sizes.size[7].source);
             }
-            $("li[data-slide-to='0']").append(hauntedHouseImg);
+            $(".hauntedPic").append(hauntedHouseImg);
         }
     }
     $.ajax(ajaxConfig);

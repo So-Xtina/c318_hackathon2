@@ -174,7 +174,7 @@ body {
     z-index: 100;
     top: 0;
     left: 0;
-     display: none;
+     /* display: none; */
 }
 
 #infoModal { 
@@ -183,7 +183,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-     display: none;
+     /* display: none; */
     /* background-color: grey; */
 }
 
@@ -202,6 +202,13 @@ body {
 }
 p{
     font-size: 2em;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .glitch--style-3 {
