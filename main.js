@@ -44,7 +44,7 @@ var latitudeLongitudeLocations = [
  * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
  */
 function initializeApp(){
-    initMap(latitudeLongitudeLocations);
+    initMap();
     googleMapsLocations(destinationArray);
     addClickHandlersToElements();
 }
@@ -114,10 +114,9 @@ function googleMapsLocations(array){
         })
     }
 }
-function initMap() {
-    function initializeMap(locationsArray) {
+    function initMap() {
         var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
-        var map = new google.maps.Map(document.getElementsByClassName('theMap'), {
+        var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 3.9,
             center: unitedStatesCenterPoint
         });
@@ -128,7 +127,7 @@ function initMap() {
             });
         }
     }
-}
+
 /*************************************************
  * YouTube AJAX Call:
  */

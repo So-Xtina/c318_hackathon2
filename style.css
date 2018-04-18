@@ -109,7 +109,7 @@ body {
 
 .container {
     position: absolute;
-    visibility: hidden;
+    /*visibility: hidden;*/
     display: inline-block;
     color: white;
     margin: auto;
@@ -118,7 +118,7 @@ body {
     height: 70%;
     width: 90%;
     background-color: white;
-    opacity: .4;
+    /*opacity: .4;*/
 }
 
 .glitch--style-3 {
@@ -708,6 +708,22 @@ body {
 }
 
 
-.container{
-    position:absolute;
+/*.container{*/
+    /*position:absolute;*/
+/*}*/
+#map{
+    width:90%;
+    height: 90%;
+    position: relative;
+    left: 5%;
+    top: 5%;
+}
+
+.page-pic{
+    border: 1px solid red;
+    width:20%;
+    height: 20%;
+}
+p{
+    font-size: 2em;
 }
