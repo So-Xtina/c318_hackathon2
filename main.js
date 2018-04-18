@@ -178,29 +178,6 @@ function stopVideo() {
  * Flickr AJAX Call
  */
 
-// function flickrImages(text) {
-//         var ajaxImages = {
-//             dataType: 'json',
-//             data: {
-//                 api_key: 'f1e9ba45e6591bdf15e5a296d5ebaaa6',
-//                 secret: '3eec67f85681e79a',
-//                 method: 'flickr.photos.search',
-//                 format: 'json',
-//                 nojsoncallback: '1',
-//                 text: text
-//             },
-//             method: 'POST',
-//             url: 'https://api.flickr.com/services/rest/?',
-//             success: function (data) {
-//                 console.log('This is the data returned', data);
-//             },
-//             error: function (error) {
-//                 console.log('This is the error', error);
-//             }
-//         }
-//         $.ajax(ajaxImages);
-// }
-
 function getFlickrImageUrl(photo_id) {
     var ajaxConfig = {
         dataType: 'JSON',
@@ -214,14 +191,16 @@ function getFlickrImageUrl(photo_id) {
         },
         method: 'GET',
         url: 'https://api.flickr.com/services/rest?',
-        success: function(data) {
+        success: function (data) {
             console.log("This is the data we're getting back from the getFlickerImageUrl", data);
-            if(data.sizes.size.length < 8){
-                $('<img>').css('url', data.sizes.size[data.sizes.size.length-1])
+            var hauntedHouseImg = null;
+            if (data.sizes.size.length < 8) {
+                hauntedHouseImg = $('<img>').attr('src', data.sizes.size[data.sizes.size.length - 1])
             } else {
-                data.sizes.size[7];
+                hauntedHouseImg = $('<img>').attr('src', data.sizes.size[7]);
             }
+            $("li[data-slide-to='0']").append(hauntedHouseImg);
         }
     }
     $.ajax(ajaxConfig);
-};
+}
