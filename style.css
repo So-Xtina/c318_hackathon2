@@ -89,6 +89,7 @@ body {
     padding-top: 5px;
 }
 
+
 .hauntedSpots {
     --color-text: #454847;
     --color-bg: #1d2121;
@@ -693,3 +694,7 @@ body {
 }
 
 
+
+.container{
+    position:absolute;
+}
