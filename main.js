@@ -43,8 +43,7 @@ var latitudeLongitudeLocations = [
  * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
  */
 function initializeApp(){
-    initializeMap();
-    renderMapToDom(latitudeLongitudeLocations);
+    initMap(latitudeLongitudeLocations);
     googleMapsLocations(destinationArray);
     addClickHandlersToElements();
 }
@@ -97,15 +96,33 @@ function carousalModal(destinationObject) {
     
 }
 
+function googleMapsLocations(array){
+    var latLongObject = {};
+    for(var i = 0; i < array.length; i++){
+        $.ajax({
+            dataType: 'json',
+            method: 'post',
+            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+array[i]+'&key=AIzaSyB8pudXXVYwWP14nlsKLdjfrzGizasWYb4',
+            success: function(response){
+
+                console.log('success');
+                console.log(response);
+                return true;
+            }
+
+        })
+    }
+}
+function initMap() {
 function initializeMap(locationsArray) {
     var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(document.getElementsByClassName('theMap'), {
         zoom: 3.9,
         center: unitedStatesCenterPoint
     });
-    for(var i = 0; i < locationsArray.length; i++){
+    for(var i = 0; i < latitudeLongitudeLocations.length; i++){
             var marker = new google.maps.Marker({
-            position: locationsArray[i].coordinates,
+            position: latitudeLongitudeLocations[i].coordinates,
             map: map
         });
     }
