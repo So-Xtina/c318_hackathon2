@@ -13,6 +13,10 @@
 
 }
 
+
+.hauntedSpots {
+    cursor: pointer;
+}
 /*@keyframes color-me-in {*/
     /*0% {*/
         /*background-image: url("images/white.png");*/
@@ -195,7 +199,7 @@ body {
 #map{
     width:90%;
     height: 90%;
-    position: relative;
+    /*position: relative;*/
     left: 5%;
     top: 5%;
 }
