@@ -143,10 +143,10 @@ body {
 }
 
 .hauntedSpots:nth-child(5) {
-    padding-top: 5px;
+    padding-top: 15px;
 }
 
-.hauntedSpots {
+/* .hauntedSpots {
     --color-text: #454847;
     --color-bg: #1d2121;
     --color-link: #454847;
@@ -156,7 +156,7 @@ body {
     --glitch-height: calc(40vmax * 1.25);
     --color-title: #fff;
     --color-subtitle: #30efbf;
-}
+} */
 
 .theMap img {
     background-size: 500px 0;
@@ -164,18 +164,44 @@ body {
     display: inline-block;
 }
 
-.container {
-    position: absolute;
-    visibility: hidden;
-    display: inline-block;
-    color: white;
-    margin: auto;
-    right: 6%;
-    top: 20%;
-    height: 70%;
-    width: 90%;
-    background-color: white;
-    /*opacity: .4;*/
+/***modal Container***/
+.shadowBox {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: black;
+    opacity: 0.4;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+#infoModal { 
+    position: fixed;
+    z-index: 150;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    background-color: grey;
+}
+
+#map{
+    width:90%;
+    height: 90%;
+    position: relative;
+    left: 5%;
+    top: 5%;
+}
+
+.page-pic{
+    border: 1px solid red;
+    width:20%;
+    height: 20%;
+}
+p{
+    font-size: 2em;
 }
 
 .glitch--style-3 {
@@ -762,25 +788,4 @@ body {
         opacity: 0;
         transform: translate3d(0,0,0);
     }
-}
-
-
-/*.container{*/
-    /*position:absolute;*/
-/*}*/
-#map{
-    width:90%;
-    height: 90%;
-    position: relative;
-    left: 5%;
-    top: 5%;
-}
-
-.page-pic{
-    border: 1px solid red;
-    width:20%;
-    height: 20%;
-}
-p{
-    font-size: 2em;
 }
