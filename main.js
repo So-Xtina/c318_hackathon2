@@ -43,8 +43,7 @@ var latitudeLongitudeLocations = [
  * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
  */
 function initializeApp(){
-    initializeMap();
-    renderMapToDom(latitudeLongitudeLocations);
+    initMap(latitudeLongitudeLocations);
     googleMapsLocations(destinationArray);
 }
 
@@ -110,15 +109,15 @@ function googleMapsLocations(array){
         })
     }
 }
-function initializeMap(locationsArray) {
+function initMap() {
     var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
-    var map = new google.maps.Map(document.getElementById('map'), {
+    var map = new google.maps.Map(document.getElementsByClassName('theMap'), {
         zoom: 3.9,
         center: unitedStatesCenterPoint
     });
-    for(var i = 0; i < locationsArray.length; i++){
+    for(var i = 0; i < latitudeLongitudeLocations.length; i++){
             var marker = new google.maps.Marker({
-            position: locationsArray[i].coordinates,
+            position: latitudeLongitudeLocations[i].coordinates,
             map: map
         });
     }
