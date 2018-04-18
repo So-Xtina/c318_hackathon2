@@ -109,7 +109,7 @@ function initializeMap(locationsArray) {
             map: map
         });
     }
-
+}
 /*************************************************
  * YouTube AJAX Call:
  */
@@ -196,8 +196,8 @@ function getFlickrImageUrl(photo_id) {
         url: 'https://api.flickr.com/services/rest?',
         success: function(data) {
             console.log("This is the data we're getting back from the getFlickerImageUrl", data);
-
+            if(data.)
         }
     }
     $.ajax(ajaxConfig);
-}
+};
