@@ -4,25 +4,35 @@ $(document).ready(initializeApp);
 //1126 Queens Hwy, Long Beach, CA 90802
 var destinationArray = ['525+S+Winchester+Blvd,+San+Jose,', '7747+Francisville+St,+Louisiana,', '1126+Queens+Highway,+Long+Beach,'];
 var latitudeLongitudeLocations = [
-    {'Queen Mary': {lat:33.7531, lng: -118.1898}
+    {   name: 'Queen Mary',
+        coordinates: {lat:33.7531, lng: -118.1898}
     },
-    {'Lalaurie Mansion': {lat:29.951065, lng:-90.071533}
+    {   name: 'Lalaurie Mansion',
+        coordinates: {lat:29.951065, lng:-90.071533}
     },
-    {'Winchester House': {lat:37.318331800, lng:-121.951049100}
+    {   name: 'Winchester House',
+        coordinates: {lat:37.318331800, lng:-121.951049100}
     },
-    {'Trans Allegheny Asylum': {lat:39.3166654, lng:-82.0999996}
+    {   name: 'Trans Allegheny Asylum',
+        coordinates: {lat:39.3166654, lng:-82.0999996}
     },
-    {'Ohio State Reformatory': {lat:41.1058079101, lng:-80.5732243738}
+    {   name: 'Ohio State Reformatory',
+        coordinates: {lat:41.1058079101, lng:-80.5732243738}
     },
-    {'Myrtles Plantation': {lat:33.689060, lng:-78.886696}
+    {   name: 'Myrtles Plantation',
+        coordinates: {lat:33.689060, lng:-78.886696}
     },
-    {'St. Augustine Lighthouse': {lat:29.901243, lng:-81.312431}
+    {   name: 'St. Augustine Lighthouse',
+        coordinates: {lat:29.901243, lng:-81.312431}
     },
-    {'Lizzie Borden House': {lat:45.253783, lng:-69.445474}
+    {   name: 'Lizzie Borden House',
+        coordinates: {lat:45.253783, lng:-69.445474}
     },
-    {'Denver & Rio Grande Railroad': {lat:34.0008993, lng:-106.818634}
+    {   name:'Denver & Rio Grande Railroad',
+        coordinates: {lat:34.0008993, lng:-106.818634}
     },
-    {'Eastern State Penitentiary': {lat:39.96839, lng:-75.172652}
+    {   name: 'Eastern State Penitentiary',
+        coordinates: {lat:39.96839, lng:-75.172652}
     }
 
 ];
@@ -34,7 +44,7 @@ var latitudeLongitudeLocations = [
  */
 function initializeApp(){
     initializeMap();
-
+    renderMapToDom(latitudeLongitudeLocations);
     googleMapsLocations(destinationArray);
 }
 
@@ -100,15 +110,15 @@ function googleMapsLocations(array){
         })
     }
 }
-function initializeMap(latLongObj) {
+function initializeMap(locationsArray) {
     var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
     var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 3.9,
         center: unitedStatesCenterPoint
     });
-    for(var i = 0; i < array.length; i++){
-        var marker[i] = new google.maps.Marker({
-            position: array[i],
+    for(var i = 0; i < locationsArray.length; i++){
+            var marker = new google.maps.Marker({
+            position: locationsArray[i].coordinates,
             map: map
         });
     }
