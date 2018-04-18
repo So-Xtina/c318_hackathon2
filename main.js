@@ -42,8 +42,8 @@ var latitudeLongitudeLocations = [
  * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
  */
 function initializeApp(){
-    // initMap();
-    // googleMapsLocations(destinationArray);
+    initMap();
+    googleMapsLocations(destinationArray);
     addClickHandlersToElements();
 }
 
