@@ -44,6 +44,11 @@ body {
 
 }
 
+.about {
+    background-image: url("images/damnation.jpg");
+    padding: 15%;
+}
+
 .main-page-enter {
     display: flex;
     align-items: center;
@@ -183,7 +188,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* display: none; */
+     /*display: none;*/
     /* background-color: grey; */
 }
 
