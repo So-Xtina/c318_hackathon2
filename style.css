@@ -32,7 +32,10 @@ body {
     flex-flow: row wrap;
  }
 
-
+.about {
+    background-image: url("images/damnation.jpg");
+    padding: 15%;
+}
 .landing-page-body {
     background-image: url("images/landing.jpg");
     font-family: 'IM Fell English SC', serif;
@@ -150,23 +153,15 @@ body {
     padding-top: 15px;
 }
 
-/* .hauntedSpots {
-    --color-text: #454847;
-    --color-bg: #1d2121;
-    --color-link: #454847;
-    --color-link-hover: #fff;
-    --color-info: #454847;
-    --glitch-width: 40vmax;
-    --glitch-height: calc(40vmax * 1.25);
-    --color-title: #fff;
-    --color-subtitle: #30efbf;
-} */
+.hauntedSpots {
+    transition: 0.5s;
+  }
+  
+  .hauntedSpots:hover{
+    transform: scale(1.1);
+  }
 
-/*.theMap img {*/
-    /*background-size: 500px 0;*/
-    /*position: relative;*/
-    /*display: inline-block;*/
-/*}*/
+
 
 /***modal Container***/
 .shadowBox {
@@ -178,7 +173,7 @@ body {
     z-index: 100;
     top: 0;
     left: 0;
-     /* display: none; */
+     display: none;
 }
 
 #infoModal { 
@@ -187,7 +182,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-     /* display: none; */
+     display: none;
     /* background-color: grey; */
 }
 

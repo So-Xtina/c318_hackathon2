@@ -4,34 +4,53 @@ $(document).ready(initializeApp);
 //1126 Queens Hwy, Long Beach, CA 90802
 var latitudeLongitudeLocations = [
     {   name: 'Queen Mary',
-        coordinates: {lat:33.7531, lng: -118.1898}
+        coordinates: {lat:33.7531, lng: -118.1898},
+        wikiReference: 166115
+
     },
     {   name: 'Lalaurie Mansion',
-        coordinates: {lat:29.951065, lng:-90.071533}
+        coordinates: {lat:29.951065, lng:-90.071533},
+        wikiReference: 2336222
+
     },
     {   name: 'Winchester House',
-        coordinates: {lat:37.318331800, lng:-121.951049100}
+        coordinates: {lat:37.318331800, lng:-121.951049100},
+        wikiReference: 268137
     },
     {   name: 'Trans Allegheny Asylum',
-        coordinates: {lat:39.3166654, lng:-82.0999996}
+        coordinates: {lat:39.3166654, lng:-82.0999996},
+        wikiReference: 9642517
+
     },
     {   name: 'Ohio State Reformatory',
-        coordinates: {lat:41.1058079101, lng:-80.5732243738}
+        coordinates: {lat:41.1058079101, lng:-80.5732243738},
+        wikiReference: 2968986
+
     },
     {   name: 'Myrtles Plantation',
-        coordinates: {lat:33.689060, lng:-78.886696}
+        coordinates: {lat:33.689060, lng:-78.886696},
+        wikiReference: 2557599
+
     },
     {   name: 'St. Augustine Lighthouse',
-        coordinates: {lat:29.901243, lng:-81.312431}
+        coordinates: {lat:29.901243, lng:-81.312431},
+        wikiReference: 4007948
+
     },
     {   name: 'Lizzie Borden House',
-        coordinates: {lat:45.253783, lng:-69.445474}
+        coordinates: {lat:45.253783, lng:-69.445474},
+        wikiReference: 45577594
+
     },
     {   name:'Denver & Rio Grande Railroad',
-        coordinates: {lat:34.0008993, lng:-106.818634}
+        coordinates: {lat:34.0008993, lng:-106.818634},
+        wikiReference: 48550
+
     },
     {   name: 'Eastern State Penitentiary',
-        coordinates: {lat:39.96839, lng:-75.172652}
+        coordinates: {lat:39.96839, lng:-75.172652},
+        wikiReference: 443724
+
     }
 
 ];
@@ -65,7 +84,7 @@ function addClickHandlersToElements() {
     });
 
     $('.close').on('click', function(){
-        $('#infoModal, .shadowBox').toggle();
+        $('#infoModal, .shadowBox').toggle()
     });
 }
 
@@ -213,12 +232,14 @@ function getFlickrImageUrl(photo_id) {
 }
 
 
-function wikiCall(link) {
+function wikiCall(wikiReference) {
     $.ajax({
         type: "get",
-        url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="+link,
+        url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="+wikiReference,
         dataType: 'jsonp',
         success: function (result) {
+            var pageInfo = $("<div>").text(result.query.pages[latitudeLongitudeLocations.wikiReference].extract);
+            $(".wikiInfo").append(pageInfo);
             console.log(result);
         }
 
