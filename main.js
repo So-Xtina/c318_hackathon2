@@ -42,7 +42,7 @@ var latitudeLongitudeLocations = [
  * initializes the application, including adding click handlers and pulling in any data from the server, in later versions
  */
 function initializeApp(){
-    // initMap();
+    initMap();
     // googleMapsLocations(destinationArray);
     addClickHandlersToElements();
 }
@@ -122,7 +122,7 @@ function googleMapsLocations(array){
     function initMap() {
         // debugger;
         var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
-        var map = new google.maps.Map(document.getElementById('map'), {
+        var map = new google.maps.Map(document.getElementById('theMap'), {
             zoom: 3.9,
             center: unitedStatesCenterPoint
         });
