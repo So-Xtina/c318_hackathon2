@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Haunted Locations</title>
+    <link href="https://fonts.googleapis.com/css?family=IM+Fell+English+SC" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj4naozOANLykVrMvS32iVCTgAqen0MDA&libraries=places"></script>
+</head>
+
+<body>
+    <nav class='navHeader'>
+        <div class="navTitle">
+            <div class="title"><h1 class="heading">Haunted America</h1></div>
+        </div>
+
+        <div class="infoNav">
+            <div class="navMenu"><a href="index.html">Home</a></div>
+            <div class="navMenu"><a href="about.html">About</a></div>
+        </div>
+    </nav>
+    <div class="menuContainer">
+        <div class="locations-menu">
+            <div class="hauntedSpots" data-photo-id="13559546644" data-video-id="Obf1vFaCBSM">Winchester Mystery House</div>
+            <div class="hauntedSpots" data-photo-id="1316667143" data-video-id="nJRJjxZm41o">Eastern State Penitentiary</div>
+            <div class="hauntedSpots" data-photo-id="38279527794" data-video-id="_4jEC32WuxA">The LaLaurie Mansion</div>
+            <div class="hauntedSpots" data-photo-id="29816363744" data-video-id="Slb-dBBBQFw">Lizzie Borden House</div>
+            <div class="hauntedSpots" data-photo-id="2713440349" data-video-id="Y5bW1frdYOY">Denver &amp; Rio Grande Railroad Depot</div>
+            <div class="hauntedSpots" data-photo-id="3018497688" data-video-id="rtjr1lMre6M">St. Augustine Lighthouse</div>
+            <div class="hauntedSpots" data-photo-id="40549504662" data-video-id="MFkmzNkfzo0">Myrtle's Plantation</div>
+            <div class="hauntedSpots" data-photo-id="14670741576" data-video-id="qdFm-BedbPM">Ohio State Reformatory</div>
+            <div class="hauntedSpots" data-photo-id="37886393072" data-video-id="UMN9DzVtLGg">Trans-Allegheny Lunatic Asylum</div>
+            <div class="hauntedSpots" data-photo-id="13146069214" data-video-id="dlOw44340j0">RMS Queen Mary</div>
+        </div>
+        <div class='map-area'>
+            <div id="theMap"></div>
+        </div>
+
+        <div id="appendhere"></div>
+    </div>
+
+    
+    <div class="shadowBox"></div>
+    <div id="infoModal">
+        <div id="infoCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#infoCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#infoCarousel" data-slide-to="1"></li>
+                    <li data-target="#infoCarousel" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="hauntedPic"></div>
+                    </div>
+
+                    <div class="item">
+                        <div id="item"></div>
+                    </div>
+
+                    <div class="item">
+                        <div class="wikiInfo"></div>
+                    </div>
+                </div>
+                <button class="close">Close</button>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#infoCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#infoCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+        </div>
+    </div>
+</body>
+
+</html>
