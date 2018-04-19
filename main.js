@@ -211,3 +211,16 @@ function getFlickrImageUrl(photo_id) {
     }
     $.ajax(ajaxConfig);
 }
+
+
+function wikiCall(link) {
+    $.ajax({
+        type: "get",
+        url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="+link,
+        dataType: 'jsonp',
+        success: function (result) {
+            console.log(result);
+        }
+
+    });
+}
