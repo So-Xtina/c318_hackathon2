@@ -117,7 +117,11 @@ body {
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
+
+.locations-menu:hover, .locations-menu:active {
+    font-size: 125%;}
 
 .map-area {
     height: 100%;
@@ -128,7 +132,7 @@ body {
 
 }
 
-#map img {
+#theMap img {
     -webkit-filter: invert(1);
     filter: invert(1);
     opacity: .85;
@@ -158,11 +162,11 @@ body {
     --color-subtitle: #30efbf;
 } */
 
-.theMap img {
-    background-size: 500px 0;
-    position: relative;
-    display: inline-block;
-}
+/*.theMap img {*/
+    /*background-size: 500px 0;*/
+    /*position: relative;*/
+    /*display: inline-block;*/
+/*}*/
 
 /***modal Container***/
 .shadowBox {
@@ -187,10 +191,9 @@ body {
     /* background-color: grey; */
 }
 
-#map{
-    width:90%;
-    height: 90%;
-    position: relative;
+#theMap{
+    width:85%;
+    height: 85%;
     left: 5%;
     top: 5%;
 }
