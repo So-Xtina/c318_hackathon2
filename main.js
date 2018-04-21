@@ -87,7 +87,9 @@ function addClickHandlersToElements() {
     });
 
     $('.close').on('click', function(){
-        $('#infoModal, .shadowBox').toggle()
+        $('#infoModal, .shadowBox').toggle();
+        $('.hauntedPic').empty();
+        $('#info').empty();
     });
 }
 
@@ -172,7 +174,7 @@ function googleMapsLocations(array){
     function displayVideo(videoID) {
         console.log("This is the video id in the function ", videoID);
 
-            player= new YT.Player('item', {
+            player= new YT.Player('video', {
                 height: '390',
                 width: '640',
                 videoId: videoID, // needs to be a function looping through the object and pulling the videoId value and placing the correct one here for the call
