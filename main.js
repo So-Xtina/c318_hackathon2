@@ -77,6 +77,9 @@ function addClickHandlersToElements() {
     $('.hauntedSpots').on('click', function() {
         var photo_id = $(this).attr('data-photo-id');
         var video_id = $(this).attr('data-video-id');
+        var wikiReference = $(this).attr('data-wiki-info');
+        var wikiID = $(this).attr('data-wiki-id');
+        wikiCall(wikiReference, wikiID);
         getFlickrImageUrl(photo_id);
         displayVideo(video_id);
         $('#infoModal, .shadowBox').toggle();
@@ -232,15 +235,23 @@ function getFlickrImageUrl(photo_id) {
 }
 
 
-function wikiCall(wikiReference) {
+function wikiCall(wikiReference, wikiID) {
     $.ajax({
         type: "get",
         url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="+wikiReference,
         dataType: 'jsonp',
         success: function (result) {
-            var pageInfo = $("<div>").text(result.query.pages[latitudeLongitudeLocations.wikiReference].extract);
-            $(".wikiInfo").append(pageInfo);
             console.log(result);
+
+            var text = result.query.pages[wikiID]["extract"];
+            var pageInfo = $("<p>", {
+                text: text,
+                css: {
+                    fontSize: '16px'
+                }
+
+            });
+            $("#info").append(pageInfo);
         }
 
     });

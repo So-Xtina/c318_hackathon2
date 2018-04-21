@@ -186,6 +186,10 @@ body {
     /* background-color: grey; */
 }
 
+.carousel-inner {
+    background-color: black;
+}
+
 #theMap{
     width:85%;
     height: 85%;
