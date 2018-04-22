@@ -1,4 +1,21 @@
 $(document).ready(initializeApp);
+    $(function() {
+        $('#enter').hover(function () {
+            $('.landing-page-body').addClass('blur')
+        }, function () {
+            $('.landing-page-body').removeClass('blur')
+        });
+    });
+
+    $(function() {
+        $('#about-link').hover(function () {
+            $('.about').addClass('blur')
+        }, function () {
+            $('.about').removeClass('blur')
+        });
+    });
+
+
 //525 S Winchester Blvd, San Jose, CA 95128
 //7747 U.S. 61, St Francisville, LA 70775
 //1126 Queens Hwy, Long Beach, CA 90802

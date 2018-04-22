@@ -1,7 +1,4 @@
-/*@font-face {*/
-    /*font-family: scary;*/
-    /*src: url(fonts/October Crow.ttf);*/
-/*}*/
+
 
 
 * {
@@ -9,42 +6,98 @@
     color: ghostwhite;
     font-family: 'IM Fell English SC', serif;
     text-shadow: 3px 3px 5px #901a18;
-    /*animation: color-me-in 5s;*/
 
 }
 
-/*@keyframes color-me-in {*/
-    /*0% {*/
-        /*background-image: url("images/white.png");*/
-    /*}*/
-    /*100% {*/
-        /*background-image: url("images/Gloomy_Forest.jpg");*/
-
-    /*}*/
-/*}*/
-
-body {
+.index-body {
     background-image: url("images/Gloomy_Forest.jpg");
     background-size: cover;
+    position: relative;
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-flow: row wrap;
  }
 
-.about {
-    background-image: url("images/damnation.jpg");
-    padding: 15%;
-}
-.landing-page-body {
-    background-image: url("images/landing.jpg");
-    font-family: 'IM Fell English SC', serif;
+.index-body::before {
+    background-image: url("images/Gloomy_Forest.jpg");
     background-size: cover;
+    position: absolute;
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-flow: row wrap;
+}
+.about {
+    background-image: url("images/damnation.jpg");
+    padding: 15%;
+    background-attachment: fixed;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+}
 
+.about::before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("images/landing.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    opacity: 0;
+    transition: opacity .8s ease-in-out;
+}
+
+.about.blur::before {
+    opacity: 1;
+}
+
+#about-link {
+    z-index: 5;
+}
+
+
+.landing-page-body {
+    background-image: url("images/landing.jpg");
+    font-family: 'IM Fell English SC', serif;
+    background-attachment: fixed;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    /*flex-flow: row wrap;*/
+}
+
+.landing-page-body::before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-image: url("images/landing.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    opacity: 0;
+    transition: opacity .8s ease-in-out;
+}
+
+.landing-page-body.blur::before {
+    opacity: 1;
 }
 
 .main-page-enter {
@@ -52,6 +105,7 @@ body {
     align-items: center;
     margin: auto;
     font-size: xx-large;
+    z-index: 5;
 }
 
 .heading {
