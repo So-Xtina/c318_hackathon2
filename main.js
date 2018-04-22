@@ -15,6 +15,12 @@ $(document).ready(initializeApp);
         });
     });
 
+    $(function () {
+        $('.index-body').on('load', function () {
+            $('.index-body').addClass('blur')
+        })
+    })
+
 
 //525 S Winchester Blvd, San Jose, CA 95128
 //7747 U.S. 61, St Francisville, LA 70775
