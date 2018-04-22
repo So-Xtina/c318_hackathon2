@@ -15,11 +15,16 @@ $(document).ready(initializeApp);
         });
     });
 
-    $(function () {
-        $('.index-body').on('load', function () {
-            $('.index-body').addClass('blur')
-        })
-    })
+    $(function() {
+        $('.index-body').hover(function () {
+            $('.about').addClass('blur')
+        }, function () {
+            $('.about').removeClass('blur')
+        });
+    });
+
+
+
 
 
 //525 S Winchester Blvd, San Jose, CA 95128
