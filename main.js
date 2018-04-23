@@ -1,27 +1,4 @@
 $(document).ready(initializeApp);
-    $(function() {
-        $('#enter').hover(function () {
-            $('.landing-page-body').addClass('blur')
-        }, function () {
-            $('.landing-page-body').removeClass('blur')
-        });
-    });
-
-    $(function() {
-        $('#about-link').hover(function () {
-            $('.about').addClass('blur')
-        }, function () {
-            $('.about').removeClass('blur')
-        });
-    });
-
-    $(function() {
-        console.log('test')
-    });
-
-
-
-
 
 //525 S Winchester Blvd, San Jose, CA 95128
 //7747 U.S. 61, St Francisville, LA 70775
@@ -86,7 +63,6 @@ var latitudeLongitudeLocations = [
  */
 function initializeApp(){
     initMap();
-    // googleMapsLocations(destinationArray);
     addClickHandlersToElements();
 
 }
@@ -97,6 +73,25 @@ function initializeApp(){
  * @params {undefined}
  * @returns  {undefined}
  */
+ $(function() {
+        $('#enter').hover(function () {
+            $('.landing-page-body').addClass('blur')
+        }, function () {
+            $('.landing-page-body').removeClass('blur')
+        });
+    });
+
+    $(function() {
+        $('#about-link').hover(function () {
+            $('.about').addClass('blur')
+        }, function () {
+            $('.about').removeClass('blur')
+        });
+    });
+
+    $(function() {
+        console.log('test')
+    });
 
 function addClickHandlersToElements() {
     $('.hauntedSpots').on('click', function() {
@@ -124,57 +119,14 @@ function addClickHandlersToElements() {
 }
 
 /*************************************************************************************************************************
- * addDestination
- * @params {undefined}
- * @returns  {undefined}
- */
-
-function addDestination() {
-    var destinationObject = {};
-
-}
-
-/*************************************************************************************************************************
- * renderMapToDom
+ * initMap
  * @params {object}
  * @calls Google Maps API call
  * @returns  {undefined}
  */
 
-function renderMapToDom(destinationObject) {
-
-}
-
-/*************************************************************************************************************************
- * carousalModal
- * @params {destinationObject}
- * @calls renderPicturesToModal,
- * @returns  {undefined}
- */
-
-function carousalModal(destinationObject) {
-    
-}
-
-function googleMapsLocations(array){
-    var latLongObject = {};
-    for(var i = 0; i < array.length; i++){
-        $.ajax({
-            dataType: 'json',
-            method: 'post',
-            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+array[i]+'&key=AIzaSyB8pudXXVYwWP14nlsKLdjfrzGizasWYb4',
-            success: function(response){
-
-                console.log('success');
-                console.log(response);
-                return true;
-            }
-
-        })
-    }
-}
     function initMap() {
-        // debugger;
+    //Skeleton block came from google Maps API https://developers.google.com/maps/documentation/javascript/
         var unitedStatesCenterPoint = {lat: 37.090240, lng: -95.712891};
         var map = new google.maps.Map(document.getElementById('theMap'), {
             zoom: 3.9,
@@ -185,12 +137,26 @@ function googleMapsLocations(array){
                 position: latitudeLongitudeLocations[i].coordinates,
                 map: map
             });
+            // map.addListener('center_changed', function() {
+            //     // 3 seconds after the center of the map has changed, pan back to the
+            //     // marker.
+            //     window.setTimeout(function() {
+            //         map.panTo(marker.getPosition());
+            //     }, 3000);
+            // });
+            //
+            // marker.addListener('click', function() {
+            //     map.setZoom(18);
+            //     map.setCenter(marker.getPosition());
+            // });
         }
     }
 
 /*************************************************
  * YouTube AJAX Call:
  */
+//This code block was found on youtube's API page https://developers.google.com/youtube/iframe_api_reference
+
 // 2. This code loads the IFrame Player API code asynchronously.
     var tag = document.createElement('script');
 
@@ -268,6 +234,7 @@ function getFlickrImageUrl(photo_id) {
 
 
 function wikiCall(wikiReference, wikiID) {
+    //Skeleton block was borrowed from http://www.9bitstudios.com/2014/03/getting-data-from-the-wikipedia-api-using-jquery/
     $.ajax({
         type: "get",
         url: "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles="+wikiReference,
@@ -288,3 +255,4 @@ function wikiCall(wikiReference, wikiID) {
 
     });
 }
+
