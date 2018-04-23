@@ -16,11 +16,7 @@ $(document).ready(initializeApp);
     });
 
     $(function() {
-        $('.index-body').hover(function () {
-            $('.about').addClass('blur')
-        }, function () {
-            $('.about').removeClass('blur')
-        });
+        console.log('test')
     });
 
 
@@ -92,6 +88,7 @@ function initializeApp(){
     initMap();
     // googleMapsLocations(destinationArray);
     addClickHandlersToElements();
+
 }
 
 
